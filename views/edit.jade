@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  //- passed into layout.jade when form.jade is rendered
+  block content
+    h1= title
+    form(method="post" action="/update/"+comment._id)
+      div.form-group
+        label(for="comment") Comment:
+        input(type="text",id="comment", name="comment",required,value=comment.title).form-control
+      div.form-group
+        label(for="user") User Email:
+        input(type="email",id="comment", name="user",required,value=comment.user).form-control
+      div.form-group
+        input(type="submit", value="Update").btn.btn-primary

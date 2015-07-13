@@ -32,6 +32,8 @@ app.get('/form', form);
 app.use('/create', form);
 app.get('/delete_all',form);
 app.get('/delete/:id',form);
+app.get('/edit/:id',form);
+app.post('/update/:id',form);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

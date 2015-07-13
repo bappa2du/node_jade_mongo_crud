@@ -16,5 +16,6 @@ block content
         a(href='/delete_all').btn.btn-danger.pull-right Delete All
     br
     - for comment in comments
-      p= comment.title
+      p= comment.title+'-'+comment.user
       a(href='/delete/'+comment._id).btn.btn-xs.btn-warning Delete
+      a(href='/edit/'+comment._id).btn.btn-xs.btn-info Edit
