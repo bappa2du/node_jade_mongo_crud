@@ -13,6 +13,7 @@ block content
         input(type="email",id="comment", name="user",required).form-control
       div.form-group
         input(type="submit", value="Save").btn.btn-primary
+        a(href='/delete_all').btn.btn-danger.pull-right Delete All
     br
     - for comment in comments
       p= comment.title

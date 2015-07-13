@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var database = require('./database');
+var mongoose = require('mongoose');
+var Comment = mongoose.model('comments');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var form = require('./routes/form');
@@ -28,7 +30,12 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/form', form);
 app.use('/create', form);
-app.use('/delete_all',form);
+app.get('/delete_all',function(req,res,next){
+  Comment.remove(function(err, comments){
+    //console.log(comments);
+    res.redirect('form');
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
