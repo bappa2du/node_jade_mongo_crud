@@ -9,7 +9,7 @@ router.get('/form', function(req, res) {
     console.log(comments);
     res.render(
       'form',
-      {title : 'Test Form', comments : comments}
+      {title : 'Jade Form', comments : comments}
     );
   });
 });
@@ -21,20 +21,20 @@ router.post('/', function(req, res) {
   })
   .save(function(err, comment) {
     console.log(comment);
-    res.redirect('form');
+    res.redirect('/');
   });
 });
 /* Delete element*/
 router.get('/delete_all',function(req,res){
 	Comment.remove(function(err,comments){
-		res.redirect('form');
+		res.redirect('/');
 	});
 });
 /*Delete Individual item*/
 router.get('/delete/:id',function(req,res){
 	var id = req.param('id');
 	Comment.remove({_id:id},function(err,comments){
-		res.redirect('/form');
+		res.redirect('/');
 	});
 });
 /*Edit individual element*/
@@ -59,7 +59,7 @@ router.post('/update/:id',function(req,res){
   		},
 		function(err,comments){
 		console.log(comments);
-		res.redirect('/form');
+		res.redirect('/');
 	});
 });
 module.exports = router;

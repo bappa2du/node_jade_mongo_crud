@@ -3,3 +3,21 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+    a(href='/form').btn.btn-primary.btn-xs.pull-right Add New
+    a(href='/delete_all').btn.btn-danger.btn-xs.pull-right Delete All
+  hr
+  table.table.table-bordered.table-striped
+    tr
+      th #
+      th Comment
+      th Email
+      th Action
+    each comment,i in comments
+      tr
+        td=(i+1)
+        td=comment.title
+        td=comment.user
+        td
+          a(href='/edit/'+comment._id).btn.btn-xs.btn-warning Edit 
+          |  
+          a(href='/delete/'+comment._id).btn.btn-xs.btn-danger Destroy

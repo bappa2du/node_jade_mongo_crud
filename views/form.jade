@@ -3,7 +3,7 @@ extends layout
 block content
   //- passed into layout.jade when form.jade is rendered
   block content
-    h1= title
+    h1.h1.text-primary=title
     form(method="post" action="/create")
       div.form-group
         label(for="comment") Comment:
@@ -12,10 +12,18 @@ block content
         label(for="user") User Email:
         input(type="email",id="comment", name="user",required).form-control
       div.form-group
-        input(type="submit", value="Save").btn.btn-primary
+        button(type="submit").btn.btn-primary Add Comment
         a(href='/delete_all').btn.btn-danger.pull-right Delete All
-    br
-    - for comment in comments
-      p= comment.title+'-'+comment.user
-      a(href='/delete/'+comment._id).btn.btn-xs.btn-warning Delete
-      a(href='/edit/'+comment._id).btn.btn-xs.btn-info Edit
+    hr
+    table.table.table-bordered.table-striped
+      tr
+        th Comment
+        th Email
+        th Action
+      each comment,i in comments
+        tr
+          td=comment.title
+          td=comment.user
+          td
+            a(href='/delete/'+comment._id).btn.btn-xs.btn-warning Delete
+            a(href='/edit/'+comment._id).btn.btn-xs.btn-info Edit
