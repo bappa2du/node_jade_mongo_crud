@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
   new Comment({title : req.body.comment})
   .save(function(err, comment) {
-    console.log(comment)
+    console.log(comment);
     res.redirect('form');
   });
 });
