@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Comment = mongoose.model('comments');
 
 /* GET form. */
-router.get('/', function(req, res) {
+router.get('/form', function(req, res) {
   Comment.find(function(err, comments){
     console.log(comments);
     res.render(
@@ -22,5 +22,16 @@ router.post('/', function(req, res) {
   });
 });
 /* Delete element*/
-
+router.get('/delete_all',function(req,res){
+	Comment.remove(function(err,comments){
+		res.redirect('form');
+	});
+});
+/*Delete Individual item*/
+router.get('/delete/:id',function(req,res){
+	var id = req.param('id');
+	Comment.remove({_id:id},function(err,comments){
+		res.redirect('/form');
+	});
+});
 module.exports = router;

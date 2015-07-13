@@ -17,3 +17,4 @@ block content
     br
     - for comment in comments
       p= comment.title
+      a(href='/delete/'+comment._id).btn.btn-xs.btn-warning Delete

@@ -28,14 +28,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/form', form);
+app.get('/form', form);
 app.use('/create', form);
-app.get('/delete_all',function(req,res,next){
-  Comment.remove(function(err, comments){
-    //console.log(comments);
-    res.redirect('form');
-  });
-});
+app.get('/delete_all',form);
+app.get('/delete/:id',form);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
