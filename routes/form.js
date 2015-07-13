@@ -6,10 +6,10 @@ var Comment = mongoose.model('comments');
 /* GET form. */
 router.get('/', function(req, res) {
   Comment.find(function(err, comments){
-    console.log(comments)
+    console.log(comments);
     res.render(
       'form',
-      {title : 'My funky form', comments : comments}
+      {title : 'Test Form', comments : comments}
     );
   });
 });
@@ -21,5 +21,6 @@ router.post('/', function(req, res) {
     res.redirect('form');
   });
 });
+/* Delete element*/
 
 module.exports = router;

@@ -6,9 +6,13 @@ block content
     h1= title
     form(method="post" action="/create")
       div.form-group
-        label(for="comment") Got something to say:
-        input(type="text",id="comment", name="comment", value=comment).form-control
-      input(type="submit", value="Save").btn.btn-primary
+        label(for="comment") Comment:
+        input(type="text",id="comment", name="comment",required).form-control
+      div.form-group
+        label(for="user") User Email:
+        input(type="email",id="comment", name="user",required).form-control
+      div.form-group
+        input(type="submit", value="Save").btn.btn-primary
     br
     - for comment in comments
       p= comment.title
