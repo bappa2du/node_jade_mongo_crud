@@ -32,14 +32,14 @@ router.get('/delete_all',function(req,res){
 });
 /*Delete Individual item*/
 router.get('/delete/:id',function(req,res){
-	var id = req.param('id');
+	var id = req.params['id'];
 	Comment.remove({_id:id},function(err,comments){
 		res.redirect('/');
 	});
 });
 /*Edit individual element*/
 router.get('/edit/:id',function(req,res){
-	var id = req.param('id');
+	var id = req.params['id'];
 	Comment.findById({_id:id},function(err,comment){
 		console.log(comment);
 		res.render(
@@ -50,7 +50,7 @@ router.get('/edit/:id',function(req,res){
 });
 /*Update item*/
 router.post('/update/:id',function(req,res){
-	var id = req.param('id');
+	var id = req.params['id'];
 	Comment.update(
 		{_id:id},
 		{

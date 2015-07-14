@@ -7,5 +7,5 @@ var Comment = new Schema({
 });
 
 mongoose.model('comments', Comment);
-
-mongoose.connect('mongodb://root:root@ds029821.mongolab.com:29821/userstory');
+//mongoose.connect('mongodb://root:****@ds029821.mongolab.com:29821/userstory');
+mongoose.connect('mongodb://root:root@localhost:27017/userstory');
